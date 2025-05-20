@@ -5,4 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/js-course-mvp/', // Имя репозитория
+  build: {
+    outDir: 'dist'
+  }
 })
