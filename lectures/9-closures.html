@@ -1,0 +1,13 @@
+<div class="lecture">
+  <h1>Замыкания в JavaScript</h1>
+
+  <p><strong>Замыкание</strong> — функция вместе со всеми внешними переменными, которые ей доступны.</p>
+
+  <h2>Пример счетчика</h2>
+  <pre><code class="language-javascript">function makeCounter() {
+  let count = 0;
+  return function() {
+    return count++;
+  };
+}</code></pre>
+</div>
