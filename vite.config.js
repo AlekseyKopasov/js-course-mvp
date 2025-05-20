@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/js-course-mvp/', // Имя репозитория
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    assetsInlineLimit: 0 // Отключаем инлайнинг MD-файлов
   }
 })

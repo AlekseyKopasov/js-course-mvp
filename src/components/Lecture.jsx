@@ -1,18 +1,23 @@
 import ReactMarkdown from 'react-markdown'
-import Prism from 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import { useEffect } from 'react'
+import { Prism as SyntaxHighlighter } from 'prism-react-renderer'
+import 'prism-themes/themes/prism-night-owl.css'
 
 export default function Lecture({ content }) {
-  useEffect(() => Prism.highlightAll(), [content])
-  
   return (
-    <article className="prose max-w-4xl mx-auto p-4">
+    <div className="markdown-body p-6 max-w-4xl mx-auto">
       <ReactMarkdown
         children={content}
         components={{
-          code({ node, inline, className, children, ...props }) {
-            return (
+          code({ node, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || '')
+            return match ? (
+              <SyntaxHighlighter
+                language={match[1]}
+                children={String(children).replace(/\n$/, '')}
+                theme={nightOwlTheme}
+                {...props}
+              />
+            ) : (
               <code className={className} {...props}>
                 {children}
               </code>
@@ -20,6 +25,6 @@ export default function Lecture({ content }) {
           }
         }}
       />
-    </article>
+    </div>
   )
 }
