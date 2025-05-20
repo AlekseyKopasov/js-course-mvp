@@ -1,6 +1,14 @@
+import { useState, useEffect } from 'react'
 import Lecture from './components/Lecture'
-import mdContent from '../public/lectures/9-closures.md?raw'
 
 export default function App() {
-  return <Lecture content={mdContent} />
+  const [content, setContent] = useState('')
+
+  useEffect(() => {
+    fetch('/lectures/9-closures.html')
+      .then(res => res.text())
+      .then(text => setContent(text))
+  }, [])
+
+  return <Lecture content={content} />
 }
