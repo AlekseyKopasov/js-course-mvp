@@ -1,5 +1,19 @@
 <!DOCTYPE html>
-<script>
-  sessionStorage.redirect = location.pathname;
-  location.replace('/js-course-mvp/'); // Имя репозитория
-</script>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+      // Только для GitHub Pages
+      if (window.location.host.includes('github.io')) {
+        window.location.replace('/js-course-mvp/')
+      }
+    </script>
+  </head>
+
+  <body>
+    <p>Redirecting...</p>
+  </body>
+
+</html>
