@@ -1,0 +1,108 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+    project: './tsconfig.json',
+  },
+  plugins: ['react', '@typescript-eslint', 'import', 'jsx-a11y'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    'import/no-unresolved': 'error',
+    'import/named': 'error',
+    'import/default': 'error',
+    'import/namespace': 'error',
+    'import/no-cycle': 'error',
+    'import/no-self-import': 'error',
+    'import/no-useless-path-segments': 'error',
+    'import/no-absolute-path': 'error',
+    'import/no-dynamic-require': 'error',
+    'import/no-webpack-loader-syntax': 'error',
+    'import/no-unassigned-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/no-mutable-exports': 'error',
+    'import/no-named-as-default': 'error',
+    'import/no-named-as-default-member': 'error',
+    'import/no-deprecated': 'error',
+    'import/no-extraneous-dependencies': 'error',
+    'import/no-internal-modules': 'error',
+    'import/no-restricted-paths': 'error',
+    'import/no-unused-modules': 'error',
+    'import/no-commonjs': 'error',
+    'import/no-amd': 'error',
+    'import/no-nodejs-modules': 'error',
+    'import/first': 'error',
+    'import/exports-last': 'error',
+    'import/no-namespace': 'error',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/newline-after-import': 'error',
+    'import/prefer-default-export': 'off',
+    'import/no-anonymous-default-export': 'error',
+    'import/group-exports': 'error',
+    'import/dynamic-import-chunkname': 'error',
+    'import/no-import-module-exports': 'error',
+    'import/no-unused-modules': 'error',
+  },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/no-explicit-any': 'error',
+        '@typescript-eslint/no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
+      },
+    },
+  ],
+}; 

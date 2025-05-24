@@ -1,0 +1,10 @@
+{
+  "*.scss": [
+    "prettier --write",
+    "stylelint src/**/**.{css,scss} --config ./.stylelintrc.json --fix"
+  ],
+  "*.{ts,js,tsx,jsx}": [
+    "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs",
+    "prettier --write"
+  ]
+}
