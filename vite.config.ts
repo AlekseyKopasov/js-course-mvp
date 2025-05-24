@@ -23,4 +23,10 @@ export default defineConfig({
     },
   },
   base: '/js-course-mvp/',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    sourcemap: true
+  }
 });
