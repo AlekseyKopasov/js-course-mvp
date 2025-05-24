@@ -10,7 +10,9 @@ const router = createBrowserRouter([
     path: '/lecture/:lectureId',
     element: <MainPage />,
   },
-]);
+], {
+  basename: '/js-course-mvp'
+});
 
 export const Router = () => {
   return <RouterProvider router={router} />;
