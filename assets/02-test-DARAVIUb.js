@@ -1,3 +1,3 @@
-const t=`# Text\r
-\r
+const t=`# Text
+
 Some text`;export{t as default};
