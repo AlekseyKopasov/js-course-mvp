@@ -36,7 +36,12 @@ export default defineConfig({
         assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
+        manualChunks: undefined,
       },
     },
+  },
+  server: {
+    port: 3000,
+    open: true,
   }
 });
