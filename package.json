@@ -6,7 +6,7 @@
   "homepage": "https://alekseykopasov.github.io/js-course-mvp",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "rimraf dist && tsc && vite build",
     "preview": "vite preview",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\" --config ./.stylelintrc.json",
     "lint:scripts": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs",
@@ -83,6 +83,7 @@
     "postcss-nesting": "^12.1.5",
     "prettier": "^3.4.2",
     "pug": "^3.0.3",
+    "rimraf": "^6.0.1",
     "sass": "^1.83.4",
     "stylelint": "^16.14.1",
     "stylelint-config-prettier-scss": "^1.0.0",
