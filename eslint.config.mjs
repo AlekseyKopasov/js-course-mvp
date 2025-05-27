@@ -12,8 +12,13 @@ const compat = new FlatCompat({
 });
 
 export default [{
-  ignores: ["**/node_modules", "**/dist", "src/ts/vendor", ".postcssrc.js", "**/vite.config.mjs.timestamp-*.mjs"],
-
+  ignores: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "src/ts/vendor/**",
+    ".postcssrc.js",
+    "**/vite.config.mjs.timestamp-*.mjs"
+  ],
 }, ...compat.extends("standard-with-typescript", "prettier"), {
   rules: {
     "import/order": ["error", {
@@ -33,6 +38,7 @@ export default [{
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "@typescript-eslint/unbound-method": "off",
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
@@ -51,14 +57,10 @@ export default [{
   },
 },
 {
-  files: ["**/*.js", "**/*.ts"],
-
-  ignores: ["src/ts/vendor/**", "plugins/pug/**"],
-
+  files: ["**/*.js", "**/*.ts", "**/*.tsx"],
   languageOptions: {
     ecmaVersion: 5,
     sourceType: "script",
-
     parserOptions: {
       project: ["./tsconfig.json", "./tsconfig.node.json"],
       tsconfigRootDir: dirName,

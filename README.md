@@ -16,25 +16,29 @@
 
 ## Технологии
 
-- React
+- React 18
 - TypeScript
-- Redux Toolkit
-- React Router
+- Vite
+- React Router DOM
 - React Markdown
 - React Syntax Highlighter
 - ESLint
+- Stylelint
 - Prettier
+- SASS
+- PostCSS
+- Autoprefixer
 
 ## Установка
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
-## Запуск
+## Разработка
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Сборка
@@ -43,14 +47,42 @@ npm start
 npm run build
 ```
 
-## Линтинг
+## Предпросмотр сборки
 
 ```bash
-npm run lint
+npm run preview
+```
+
+## Проверка кода
+
+```bash
+# Проверка стилей
+npm run lint:styles
+
+# Проверка скриптов
+npm run lint:scripts
+
+# Проверка типов
+npm run types
+
+# Полная проверка (включая editorconfig)
+npm run test
 ```
 
 ## Форматирование кода
 
 ```bash
 npm run format
+```
+
+## Автоматическое исправление ошибок
+
+```bash
+npm run lint:fix
+```
+
+## Деплой
+
+```bash
+npm run deploy
 ``` 

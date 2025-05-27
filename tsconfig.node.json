@@ -21,10 +21,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
-    // "./.postcssrc.js",
+    "vite.config.ts",
+    "eslint.config.mjs"
   ]
 }

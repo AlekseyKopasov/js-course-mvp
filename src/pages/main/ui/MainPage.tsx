@@ -1,12 +1,12 @@
+import { parseLectureContent } from '@entities/lecture/lib/parseLecture';
+import { LectureViewer } from '@widgets/lecture-viewer/ui/LectureViewer';
+import { Sidebar } from '@widgets/sidebar/ui/Sidebar';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Sidebar } from '@widgets/sidebar/ui/Sidebar';
-import { LectureViewer } from '@widgets/lecture-viewer/ui/LectureViewer';
-import { parseLectureContent } from '@entities/lecture/lib/parseLecture';
 import styles from './MainPage.module.scss';
 
 export const MainPage = () => {
-  const { lectureId } = useParams();
+  const { lectureId } = useParams<{ lectureId: string }>();
   const navigate = useNavigate();
   const [lectureContent, setLectureContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
@@ -14,14 +14,22 @@ export const MainPage = () => {
   useEffect(() => {
     const loadLecture = async () => {
       if (!lectureId) {
-        setLectureContent('');
+        // Load introduction content when no lecture is selected
+        try {
+          const module = await import('@entities/lecture/assets/lectures/0-introduction.md?raw');
+          const lecture = parseLectureContent(module.default as string, '0-introduction');
+          setLectureContent(lecture.content);
+        } catch (error) {
+          console.error('Ошибка загрузки введения:', error);
+          setLectureContent('');
+        }
         return;
       }
 
       setIsLoading(true);
       try {
         const module = await import(`@entities/lecture/assets/lectures/${lectureId}.md?raw`);
-        const lecture = parseLectureContent(module.default, lectureId);
+        const lecture = parseLectureContent(module.default as string, lectureId);
         setLectureContent(lecture.content);
       } catch (error) {
         console.error('Ошибка загрузки лекции:', error);
@@ -31,7 +39,7 @@ export const MainPage = () => {
       }
     };
 
-    loadLecture();
+    void loadLecture();
   }, [lectureId]);
 
   const handleSelectLecture = (selectedLectureId: string) => {
@@ -47,7 +55,7 @@ export const MainPage = () => {
         ) : lectureContent ? (
           <LectureViewer content={lectureContent} />
         ) : (
-          <h1>Выберите лекцию из меню слева</h1>
+          <div className={styles.loading}>Ошибка загрузки контента</div>
         )}
       </main>
     </div>

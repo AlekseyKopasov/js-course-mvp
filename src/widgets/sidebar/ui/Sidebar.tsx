@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { LectureMetadata } from '@entities/lecture/model/types';
-import { getLectureMetadata } from '@entities/lecture/lib/parseLecture';
 import { getLectures } from '@entities/lecture/lib/getLectures';
+import { getLectureMetadata } from '@entities/lecture/lib/parseLecture';
+import type { LectureMetadata } from '@entities/lecture/model/types';
+import { useState, useEffect } from 'react';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -24,7 +24,7 @@ export const Sidebar = ({ onSelectLecture, selectedLectureId }: SidebarProps) =>
         const lectureFiles = await getLectures();
         const metadataPromises = lectureFiles.map(async (lecture: Lecture) => {
           const module = await import(`@entities/lecture/assets/lectures/${lecture.id}.md`);
-          return getLectureMetadata(lecture.id, module.default);
+          return getLectureMetadata(lecture.id, module.default as string);
         });
 
         const metadata = await Promise.all(metadataPromises);
@@ -36,7 +36,7 @@ export const Sidebar = ({ onSelectLecture, selectedLectureId }: SidebarProps) =>
       }
     };
 
-    loadLectures();
+    void loadLectures();
   }, []);
 
   if (isLoading) {
@@ -51,7 +51,9 @@ export const Sidebar = ({ onSelectLecture, selectedLectureId }: SidebarProps) =>
           <li
             key={lecture.id}
             className={`${styles.lectureItem} ${lecture.id === selectedLectureId ? styles.active : ''}`}
-            onClick={() => onSelectLecture(lecture.id)}
+            onClick={() => {
+              onSelectLecture(lecture.id);
+            }}
           >
             {lecture.title}
           </li>
