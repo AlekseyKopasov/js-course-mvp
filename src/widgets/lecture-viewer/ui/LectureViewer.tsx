@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import styles from './LectureViewer.module.scss';
+
+// Ленивая загрузка SyntaxHighlighter
+const SyntaxHighlighter = lazy(
+  async () =>
+    await import('react-syntax-highlighter').then(mod => ({
+      default: mod.Prism,
+    }))
+);
 
 interface LectureViewerProps {
   content: string;
@@ -16,32 +23,47 @@ interface CodeProps {
   children?: React.ReactNode;
 }
 
-export const LectureViewer = ({ content }: LectureViewerProps) => {
+const CodeBlock = ({ node, inline, className, children, ...props }: CodeProps) => {
+  const match = /language-(\w+)/.exec(className || '');
+
+  if (!inline && match) {
+    return (
+      <Suspense
+        fallback={
+          <pre>
+            <code>{String(children)}</code>
+          </pre>
+        }
+      >
+        <SyntaxHighlighter
+          style={oneLight}
+          language={match[1]}
+          PreTag="div"
+          children={String(children).replace(/\n$/, '')}
+          {...props}
+        />
+      </Suspense>
+    );
+  }
+
+  return (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  );
+};
+
+export const LectureViewer = React.memo(({ content }: LectureViewerProps) => {
   return (
     <div className={styles.container}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code({ node, inline, className, children, ...props }: CodeProps) {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
-              <SyntaxHighlighter
-                style={oneLight as any}
-                language={match[1]}
-                PreTag="div"
-                children={String(children).replace(/\n$/, '')}
-                {...props}
-              />
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            );
-          },
+          code: CodeBlock,
         }}
       >
         {content}
       </ReactMarkdown>
     </div>
   );
-};
+});
