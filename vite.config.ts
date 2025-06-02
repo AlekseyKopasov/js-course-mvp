@@ -22,7 +22,7 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, './src/shared'),
     },
   },
-  base: '/js-course-mvp/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

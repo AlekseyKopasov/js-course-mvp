@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://alekseykopasov.github.io/js-course-mvp",
   "scripts": {
     "dev": "vite",
     "build": "rimraf dist && tsc && vite build",
