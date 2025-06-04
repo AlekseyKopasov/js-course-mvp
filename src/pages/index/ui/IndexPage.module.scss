@@ -1,0 +1,49 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.courseCard {
+  display: block;
+  padding: 1.5rem;
+  background-color: var(--bg-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  text-decoration: none;
+  color: var(--text-color);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+  }
+}
+
+.courseTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.courseDescription {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.8;
+}
