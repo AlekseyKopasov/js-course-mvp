@@ -1,0 +1,2 @@
+import{g as n}from"./main-LXLAkyIh.js";import{fF as a}from"./index-DgVhUPw7.js";function l(r,s){for(var o=0;o<s.length;o++){const e=s[o];if(typeof e!="string"&&!Array.isArray(e)){for(const t in e)if(t!=="default"&&!(t in r)){const i=Object.getOwnPropertyDescriptor(e,t);i&&Object.defineProperty(r,t,i.get?i:{enumerable:!0,get:()=>e[t]})}}}return Object.freeze(Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}))}var f=a();const c=n(f),y=l({__proto__:null,default:c},[f]);export{y as s};
+//# sourceMappingURL=solidity-UmDHYLmE.js.map
