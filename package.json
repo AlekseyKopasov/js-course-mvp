@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "rimraf dist && tsc && vite build",
     "build:github": "vite build --mode github",
-    "build:gitlab": "vite build --mode development",
     "preview": "vite preview",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\" --config ./.stylelintrc.json",
     "lint:scripts": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs",

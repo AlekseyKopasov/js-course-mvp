@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => {
-  const isGitHub = mode === 'github';
+  const base = mode === 'github' ? '/js-course-mvp/' : '/';
 
   return {
     plugins: [react()],
@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     publicDir: 'public',
-    base: isGitHub ? '/js-course-mvp/' : '/',
+    base,
     build: {
       outDir: 'dist',
       assetsDir: 'assets',
