@@ -1,13 +1,18 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import vitePluginString from 'vite-plugin-string';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
     react(),
-    vitePluginString({
-      include: ['**/*.md'],
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/assets/courses/*',
+          dest: 'courses',
+        },
+      ],
     }),
   ],
   resolve: {
@@ -20,9 +25,11 @@ export default defineConfig({
       '@features': path.resolve(__dirname, './src/features'),
       '@entities': path.resolve(__dirname, './src/entities'),
       '@shared': path.resolve(__dirname, './src/shared'),
+      '@assets': path.resolve(__dirname, './src/assets'),
     },
   },
-  base: '/js-course-mvp/',
+  publicDir: 'public',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -44,5 +51,9 @@ export default defineConfig({
     port: 8080,
     open: '/',
     host: true,
+    fs: {
+      strict: false,
+      allow: ['..'],
+    },
   },
 });

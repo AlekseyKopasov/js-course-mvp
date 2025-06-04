@@ -1,0 +1,2 @@
+import{g as n}from"./main-UGwIi8fe.js";import{f0 as p}from"./index-DzPM86MR.js";function a(t,l){for(var o=0;o<l.length;o++){const e=l[o];if(typeof e!="string"&&!Array.isArray(e)){for(const r in e)if(r!=="default"&&!(r in t)){const s=Object.getOwnPropertyDescriptor(e,r);s&&Object.defineProperty(t,r,s.get?s:{enumerable:!0,get:()=>e[r]})}}}return Object.freeze(Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}))}var f=p();const i=n(f),g=a({__proto__:null,default:i},[f]);export{g as p};
+//# sourceMappingURL=plsql-8sYmKOk1.js.map
