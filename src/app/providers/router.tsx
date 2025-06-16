@@ -1,6 +1,7 @@
-import { IndexPage } from '@pages/index/ui/IndexPage';
-import { MainPage } from '@pages/main/ui/MainPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { IndexPage } from '@/pages/index/IndexPage';
+import { MainPage } from '@/pages/main/MainPage';
 
 const router = createBrowserRouter(
   [

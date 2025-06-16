@@ -12,7 +12,7 @@
     "lint:scripts": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs",
     "lint": "npm run lint:styles && npm run lint:scripts",
     "types": "tsc --noEmit --project tsconfig.json",
-    "lint:fix": "stylelint \"src/**/*.{css,scss}\" --config ./.stylelintrc.json --fix && eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs --fix",
+    "lint:fix": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --config eslint.config.mjs --fix && stylelint \"src/**/*.{css,scss}\" --config ./.stylelintrc.json --fix",
     "editorconfig": "editorconfig-cli -x \"vendor/\" -x \"package-lock.json\"",
     "format": "prettier --write ./**/**.{js,ts,jsx,tsx}",
     "test": "npm run editorconfig && npm run lint && npm run types",

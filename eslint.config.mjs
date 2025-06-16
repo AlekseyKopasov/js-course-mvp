@@ -22,11 +22,26 @@ export default [{
 }, ...compat.extends("standard-with-typescript", "prettier"), {
   rules: {
     "import/order": ["error", {
-      alphabetize: {
-        order: "asc",
-        caseInsensitive: false,
-        orderImportKind: "asc",
+      "groups": [
+        ["builtin", "external"],
+        "internal",
+        ["parent", "sibling", "index"],
+        "object",
+        "type"
+      ],
+      "pathGroups": [
+        {
+          "pattern": "@/**",
+          "group": "internal",
+          "position": "before"
+        }
+      ],
+      "pathGroupsExcludedImportTypes": ["builtin"],
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": true
       },
+      "newlines-between": "always"
     }],
 
     "@typescript-eslint/consistent-type-definitions": "off",

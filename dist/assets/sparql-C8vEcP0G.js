@@ -1,2 +1,0 @@
-import{g as n}from"./main-UGwIi8fe.js";import{fI as p}from"./index-DzPM86MR.js";function l(t,s){for(var o=0;o<s.length;o++){const e=s[o];if(typeof e!="string"&&!Array.isArray(e)){for(const r in e)if(r!=="default"&&!(r in t)){const a=Object.getOwnPropertyDescriptor(e,r);a&&Object.defineProperty(t,r,a.get?a:{enumerable:!0,get:()=>e[r]})}}}return Object.freeze(Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}))}var f=p();const i=n(f),g=l({__proto__:null,default:i},[f]);export{g as s};
-//# sourceMappingURL=sparql-C8vEcP0G.js.map

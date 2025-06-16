@@ -1,2 +1,0 @@
-import{g as f}from"./main-UGwIi8fe.js";import{bO as u}from"./index-DzPM86MR.js";function l(r,n){for(var o=0;o<n.length;o++){const e=n[o];if(typeof e!="string"&&!Array.isArray(e)){for(const t in e)if(t!=="default"&&!(t in r)){const s=Object.getOwnPropertyDescriptor(e,t);s&&Object.defineProperty(r,t,s.get?s:{enumerable:!0,get:()=>e[t]})}}}return Object.freeze(Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}))}var a=u();const i=f(a),y=l({__proto__:null,default:i},[a]);export{y as s};
-//# sourceMappingURL=stylus-CKG5P0se.js.map

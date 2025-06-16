@@ -1,2 +1,0 @@
-import{g as a}from"./main-UGwIi8fe.js";import{fr as s}from"./index-DzPM86MR.js";function i(o,n){for(var t=0;t<n.length;t++){const r=n[t];if(typeof r!="string"&&!Array.isArray(r)){for(const e in r)if(e!=="default"&&!(e in o)){const f=Object.getOwnPropertyDescriptor(r,e);f&&Object.defineProperty(o,e,f.get?f:{enumerable:!0,get:()=>r[e]})}}}return Object.freeze(Object.defineProperty(o,Symbol.toStringTag,{value:"Module"}))}var c=s();const p=a(c),g=i({__proto__:null,default:p},[c]);export{g as r};
-//# sourceMappingURL=roboconf-5aCtCHP1.js.map
