@@ -9,7 +9,8 @@ import { Sidebar } from '@/widgets/sidebar/Sidebar';
 import styles from './MainPage.module.scss';
 
 const CACHE_KEY = 'lecture_content_cache';
-// const CACHE_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
+const isGithubPages = import.meta.env.MODE === 'github';
+const basePath = isGithubPages ? '/js-course-mvp' : '';
 
 // Функция для очистки кеша лекций
 const clearLectureCache = () => {
@@ -44,7 +45,7 @@ export const MainPage = () => {
 
     try {
       try {
-        const response = await fetch(`/courses/${courseId}/${lectureId}.md`);
+        const response = await fetch(`${basePath}/courses/${courseId}/${lectureId}.md`);
         if (!response.ok) {
           throw new Error('Файл лекции не найден');
         }
@@ -77,7 +78,7 @@ export const MainPage = () => {
         if (currentCourse && currentCourse.lectures.length > 0) {
           const firstLecture = currentCourse.lectures[0];
           try {
-            const response = await fetch(`/courses/${courseId}/${firstLecture.id}.md`);
+            const response = await fetch(`${basePath}/courses/${courseId}/${firstLecture.id}.md`);
             if (response.ok) {
               navigate(`/course/${courseId}/lecture/${firstLecture.id}`);
             } else {
