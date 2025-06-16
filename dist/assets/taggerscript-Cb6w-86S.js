@@ -1,0 +1,2 @@
+import{g as i}from"./main-IW9DVrT3.js";import{bR as c}from"./index-OwoSFg4o.js";function n(t,s){for(var o=0;o<s.length;o++){const e=s[o];if(typeof e!="string"&&!Array.isArray(e)){for(const r in e)if(r!=="default"&&!(r in t)){const a=Object.getOwnPropertyDescriptor(e,r);a&&Object.defineProperty(t,r,a.get?a:{enumerable:!0,get:()=>e[r]})}}}return Object.freeze(Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}))}var g=c();const p=i(g),l=n({__proto__:null,default:p},[g]);export{l as t};
+//# sourceMappingURL=taggerscript-Cb6w-86S.js.map
