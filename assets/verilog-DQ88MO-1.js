@@ -1,0 +1,2 @@
+import{g as f}from"./main-IW9DVrT3.js";import{ga as g}from"./index-OwoSFg4o.js";function s(t,a){for(var o=0;o<a.length;o++){const e=a[o];if(typeof e!="string"&&!Array.isArray(e)){for(const r in e)if(r!=="default"&&!(r in t)){const i=Object.getOwnPropertyDescriptor(e,r);i&&Object.defineProperty(t,r,i.get?i:{enumerable:!0,get:()=>e[r]})}}}return Object.freeze(Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}))}var n=g();const l=f(n),u=s({__proto__:null,default:l},[n]);export{u as v};
+//# sourceMappingURL=verilog-DQ88MO-1.js.map

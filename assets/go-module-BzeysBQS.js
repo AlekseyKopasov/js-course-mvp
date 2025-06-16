@@ -1,0 +1,2 @@
+import{g as s}from"./main-IW9DVrT3.js";import{dy as u}from"./index-OwoSFg4o.js";function g(o,a){for(var t=0;t<a.length;t++){const e=a[t];if(typeof e!="string"&&!Array.isArray(e)){for(const r in e)if(r!=="default"&&!(r in o)){const n=Object.getOwnPropertyDescriptor(e,r);n&&Object.defineProperty(o,r,n.get?n:{enumerable:!0,get:()=>e[r]})}}}return Object.freeze(Object.defineProperty(o,Symbol.toStringTag,{value:"Module"}))}var f=u();const l=s(f),p=g({__proto__:null,default:l},[f]);export{p as g};
+//# sourceMappingURL=go-module-BzeysBQS.js.map

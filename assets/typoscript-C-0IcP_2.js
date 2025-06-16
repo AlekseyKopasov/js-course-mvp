@@ -1,0 +1,2 @@
+import{g as c}from"./main-IW9DVrT3.js";import{g2 as n}from"./index-OwoSFg4o.js";function a(r,s){for(var o=0;o<s.length;o++){const t=s[o];if(typeof t!="string"&&!Array.isArray(t)){for(const e in t)if(e!=="default"&&!(e in r)){const p=Object.getOwnPropertyDescriptor(t,e);p&&Object.defineProperty(r,e,p.get?p:{enumerable:!0,get:()=>t[e]})}}}return Object.freeze(Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}))}var i=n();const f=c(i),y=a({__proto__:null,default:f},[i]);export{y as t};
+//# sourceMappingURL=typoscript-C-0IcP_2.js.map
