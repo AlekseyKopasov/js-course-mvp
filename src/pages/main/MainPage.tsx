@@ -3,10 +3,10 @@ import { parseLectureContent } from '@entities/lecture/lib/parseLecture';
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import styles from './MainPage.module.scss';
+
 import { LectureViewer } from '@/widgets/lecture-viewer/LectureViewer';
 import { Sidebar } from '@/widgets/sidebar/Sidebar';
-
-import styles from './MainPage.module.scss';
 
 const CACHE_KEY = 'lecture_content_cache';
 const isGithubPages = import.meta.env.MODE === 'github';
@@ -45,9 +45,12 @@ export const MainPage = () => {
 
     try {
       try {
-        const response = await fetch(`${basePath}/courses/${courseId}/${lectureId}.md`);
+        const lecturePath = `${basePath}/courses/${courseId}/${lectureId}.md`;
+
+        const response = await fetch(lecturePath);
+
         if (!response.ok) {
-          throw new Error('Файл лекции не найден');
+          throw new Error(`Файл лекции не найден (${response.status})`);
         }
         const content = await response.text();
 
@@ -78,11 +81,14 @@ export const MainPage = () => {
         if (currentCourse && currentCourse.lectures.length > 0) {
           const firstLecture = currentCourse.lectures[0];
           try {
-            const response = await fetch(`${basePath}/courses/${courseId}/${firstLecture.id}.md`);
+            const lecturePath = `${basePath}/courses/${courseId}/${firstLecture.id}.md`;
+
+            const response = await fetch(lecturePath);
+
             if (response.ok) {
               navigate(`/course/${courseId}/lecture/${firstLecture.id}`);
             } else {
-              setError('Файл лекции не найден');
+              setError(`Файл лекции не найден (${response.status})`);
             }
           } catch (error) {
             console.error('Ошибка при проверке файла лекции:', error);

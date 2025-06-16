@@ -2,6 +2,15 @@ import path from "node:path";
 import {fileURLToPath} from "node:url";
 import {FlatCompat} from "@eslint/eslintrc";
 import js from "@eslint/js";
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import importPlugin from 'eslint-plugin-import';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import nPlugin from 'eslint-plugin-n';
+import promisePlugin from 'eslint-plugin-promise';
+import prettierConfig from 'eslint-config-prettier';
 
 const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
@@ -10,6 +19,8 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all
 });
+
+const isDev = process.env.NODE_ENV === 'development';
 
 export default [{
   ignores: [
@@ -66,9 +77,7 @@ export default [{
       skipStrings: true,
     }],
 
-    "no-console": ["error", {
-      allow: ["info", "error", "warn"],
-    }],
+    "no-console": ['error', {allow: ['error', 'warn']}],
   },
 },
 {
@@ -81,4 +90,50 @@ export default [{
       tsconfigRootDir: dirName,
     },
   },
-}];
+},
+{
+  files: ['**/*.{js,jsx,ts,tsx}'],
+  languageOptions: {
+    globals: {
+      ...globals.browser,
+      ...globals.es2021,
+    },
+    parserOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true,
+      },
+    },
+  },
+  plugins: {
+    react: reactPlugin,
+    'react-hooks': reactHooksPlugin,
+    import: importPlugin,
+    'jsx-a11y': jsxA11yPlugin,
+    n: nPlugin,
+    promise: promisePlugin,
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+},
+  prettierConfig];

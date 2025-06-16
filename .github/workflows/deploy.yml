@@ -32,6 +32,12 @@ jobs:
         run: npm run build:github
         env:
           VITE_BASE_URL: '/js-course-mvp/'
+      - name: List dist contents
+        run: |
+          echo "Listing dist directory contents:"
+          ls -R dist/
+          echo "Listing dist/courses directory contents:"
+          ls -R dist/courses/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
